@@ -3,9 +3,9 @@ package model;
 public class Payment {
 
     private final double ammount;
-    private final String currency;
+    private final Currency currency;
 
-    public Payment(double ammount, String currency) {
+    public Payment(double ammount, Currency currency) {
         this.ammount = ammount;
         this.currency = currency;
     }
@@ -14,7 +14,7 @@ public class Payment {
         return ammount;
     }
 
-    public String getCurrency() {
+    public Currency getCurrency() {
         return currency;
     }
     

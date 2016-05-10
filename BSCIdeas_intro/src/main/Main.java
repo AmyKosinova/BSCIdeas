@@ -3,11 +3,7 @@ package main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Timer;
-import model.Payment;
 import model.Payments;
 
 public class Main {
@@ -26,7 +22,6 @@ public class Main {
         announceTimer.start();
 
         if (args.length == 1) {
-            System.out.println("using arg> " + args[0]);
             File inputFile = new File(args[0]);
             Payments.loadData(inputFile);
         }
