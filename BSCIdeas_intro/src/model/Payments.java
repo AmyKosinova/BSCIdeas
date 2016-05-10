@@ -76,7 +76,7 @@ public class Payments implements Serializable {
         if (!getAllPayments().isEmpty()) {
             for (Payment payment : getAllPayments()) {
                 if (payment.getAmmount() != 0) {
-                    System.out.println("\t" + payment);
+                    System.out.println("\t" + payment + " ( USD "+payment.getStandardCurrencyValue()+")");
                 }
             }
         } else {

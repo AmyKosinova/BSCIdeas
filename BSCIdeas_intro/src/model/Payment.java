@@ -10,6 +10,10 @@ public class Payment {
         this.currency = currency;
     }
 
+    public double getStandardCurrencyValue() {
+        return ammount * currency.getEchangeRate();
+    }
+
     public double getAmmount() {
         return ammount;
     }
@@ -17,7 +21,7 @@ public class Payment {
     public Currency getCurrency() {
         return currency;
     }
-    
+
     @Override
     public String toString() {
         return currency + " " + ammount;
