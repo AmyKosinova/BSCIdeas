@@ -17,6 +17,7 @@ import model.actions.LoadData;
 public class Main {
 
     private static final int ANNOUNCE_DELAY = 6 * 1000;
+    private static final int LOG_MAX_SIZE = 5 * 1024 * 1024;
 
     public static void main(String[] args) {
         setupLogging();
@@ -44,7 +45,7 @@ public class Main {
     private static void setupLogging() {
         Logger.getLogger("").getHandlers()[0].setLevel(Level.OFF);
         try {
-            Handler handler = new FileHandler("systemLog_%g.xml", 1024, 2, true);
+            Handler handler = new FileHandler("systemLog_%g.xml", LOG_MAX_SIZE, 2, true);
             handler.setLevel(Level.ALL);
             Logger.getLogger("").addHandler(handler);
         } catch (IOException ex) {
