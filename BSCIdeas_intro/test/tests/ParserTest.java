@@ -1,6 +1,8 @@
 package tests;
 
 import main.Parser;
+import model.Currency;
+import model.Payment;
 import model.Payments;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,6 +25,22 @@ public class ParserTest {
         Assert.assertFalse(Payments.getInstance().getAllPayments().isEmpty());
 
         Assert.assertFalse(Parser.parseInput("quit"));
+    }
+
+    @Test
+    public void testDecimals() {
+        String currency = "USD";
+        double ammount = 789.123;
+        Assert.assertTrue(Parser.parseInput(currency + ammount));
+        Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(ammount, Currency.getCurrency(currency))));
+    }
+
+    @Test
+    public void testNegative() {
+        String currency = "EUR";
+        double ammount = -789.123;
+        Assert.assertTrue(Parser.parseInput(currency + ammount));
+        Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(ammount, Currency.getCurrency(currency))));
     }
 
     @Test

@@ -39,8 +39,6 @@ public class ActionTest {
         addPayment = new AddPayment(12.44, null);
         executor.execute(addPayment);
         Assert.assertTrue(Payments.getInstance().getAllPayments().isEmpty());
-        
-        
 
         addPayment = new AddPayment(12.44, Currency.getCurrency("EUR"));
         executor.execute(addPayment);
