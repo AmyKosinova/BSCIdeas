@@ -16,7 +16,11 @@ public class AddPayment implements Action {
 
     @Override
     public void run() {
-        Payments.getInstance().addRecord(new Payment(amount, currency));
+        if (currency != null) {
+            Payments.getInstance().addRecord(new Payment(amount, currency));
+        } else {
+            System.err.println("currency not supported");
+        }
     }
 
 }

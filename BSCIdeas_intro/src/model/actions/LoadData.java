@@ -56,7 +56,7 @@ public class LoadData implements Action {
                 Logger.getLogger(Payments.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            System.err.println("File does not exist: " + loadFile.getAbsolutePath());
+            System.err.println("File does not exist: " + (loadFile == null ? "null" : loadFile.getAbsolutePath()));
         }
     }
 
