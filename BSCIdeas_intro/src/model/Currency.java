@@ -27,6 +27,7 @@ public class Currency {
         currencies.add(new Currency("SGD", 0.73));
         currencies.add(new Currency("USD", 1));
         currencies.add(new Currency("ZAR", 0.066));
+        currencies.add(new Currency("RMB", 0.15));
     }
 
     public Currency(String currencyCode, double exchangeRate) {
