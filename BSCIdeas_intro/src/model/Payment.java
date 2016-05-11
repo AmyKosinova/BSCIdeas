@@ -13,7 +13,7 @@ public class Payment {
     }
 
     public double getStandardCurrencyValue() {
-        return ammount * currency.getEchangeRate();
+        return ammount * currency.getExchangeRate();
     }
 
     public double getAmmount() {
