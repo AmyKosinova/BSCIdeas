@@ -3,7 +3,6 @@ package main;
 import java.io.File;
 import model.Currency;
 import model.Payment;
-import model.Payments;
 import model.actions.Action;
 import model.actions.AddPayment;
 import model.actions.Executor;
@@ -21,7 +20,7 @@ public class Parser {
             runAction = new AddPayment(
                     Double.parseDouble(input.replaceAll(ADD_PAYMENT_RX, "$2")),
                     Currency.getCurrency(input.replaceAll(ADD_PAYMENT_RX, "$1")));
-        } else if (input.matches(ADD_PAYMENT_RX)) {
+        } else if (input.matches(LOAD_FILE_RX)) {
             runAction = new LoadData(new File(input.replaceAll(LOAD_FILE_RX, "$1")));
         } else if (input.matches(EXIT_RX)) {
             System.out.println("exiting applicaton");

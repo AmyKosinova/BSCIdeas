@@ -1,0 +1,3 @@
+USD 12
+quit
+EUR 100

@@ -11,9 +11,7 @@ public class Scanner {
             if (!Parser.parseInput(input)) {
                 break;
             }
-
         }
-
     }
-
+    
 }

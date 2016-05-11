@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.Timer;
 import model.Payments;
+import model.actions.Action;
+import model.actions.Executor;
+import model.actions.LoadData;
 
 public class Main {
 
@@ -23,7 +26,8 @@ public class Main {
 
         if (args.length == 1) {
             File inputFile = new File(args[0]);
-            Payments.loadData(inputFile);
+            Action loadData = new LoadData(inputFile);
+            Executor.getInstance().execute(loadData);
         }
 
         Scanner scanner = new Scanner();

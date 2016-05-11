@@ -1,5 +1,9 @@
 package model.actions;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Payments;
+
 public class Executor {
 
     private static Executor instance;
@@ -15,6 +19,11 @@ public class Executor {
     }
 
     public void execute(Action action) {
-        action.run();
+        if (action != null) {
+            action.run();
+        } else {
+            Logger.getLogger(Executor.class.getName()).log(Level.WARNING, "Atempt to run null action");
+        }
+
     }
 }
