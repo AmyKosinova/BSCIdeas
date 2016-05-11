@@ -10,13 +10,23 @@ public class Currency {
     private static final Set<Currency> currencies = new HashSet<>();
 
     static {
-        currencies.add(new Currency("USD", 1));
-        currencies.add(new Currency("HKD", 0.13)); //1HKD = 0.13USD => input*exchange = USD
-        currencies.add(new Currency("RMB", 0.15));
-        currencies.add(new Currency("NZD", 0.67));
+        currencies.add(new Currency("AUD", 0.73));
+        currencies.add(new Currency("CAD", 0.77));
+        currencies.add(new Currency("CHF", 1.02));
+        currencies.add(new Currency("CZK", 0.04));
+        currencies.add(new Currency("DKK", 0.15));
+        currencies.add(new Currency("EUR", 1.13));
         currencies.add(new Currency("GBP", 1.44));
-        currencies.add(new Currency("EUR", 1.14));
-        currencies.add(new Currency("CZK", 0.042));
+        currencies.add(new Currency("HKD", 0.12));
+        currencies.add(new Currency("HUF", 0.00));
+        currencies.add(new Currency("JPY", 0.00));
+        currencies.add(new Currency("NOK", 0.12));
+        currencies.add(new Currency("NZD", 0.67));
+        currencies.add(new Currency("PLN", 0.25));
+        currencies.add(new Currency("SEK", 0.12));
+        currencies.add(new Currency("SGD", 0.73));
+        currencies.add(new Currency("USD", 1));
+        currencies.add(new Currency("ZAR", 0.06));
     }
 
     public Currency(String currencyCode, double echangeRate) {
