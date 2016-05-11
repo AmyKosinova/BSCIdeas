@@ -9,16 +9,15 @@ public class Scanner {
         java.util.Scanner scanner = new java.util.Scanner(System.in);
         String input;
 
-        try {
-            while (true) {
+        while (true) {
+            try {
                 input = scanner.nextLine();
                 if (!Parser.parseInput(input)) {
                     break;
                 }
+            } catch (Exception ex) {
+                Logger.getLogger(this.getClass().getName()).log(Level.WARNING, null, ex);
             }
-        } catch (Exception ex) {
-            Logger.getLogger(this.getClass().getName()).log(Level.WARNING, null, ex);
         }
     }
-
 }
