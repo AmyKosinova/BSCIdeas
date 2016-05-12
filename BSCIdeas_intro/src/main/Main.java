@@ -16,7 +16,7 @@ import model.actions.LoadData;
 
 public class Main {
 
-    private static final int ANNOUNCE_DELAY = 6 * 1000;
+    private static final int ANNOUNCE_DELAY = 60 * 1000;
     private static final int LOG_MAX_SIZE = 5 * 1024 * 1024;
 
     public static void main(String[] args) {
