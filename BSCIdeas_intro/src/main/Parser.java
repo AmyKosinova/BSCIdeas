@@ -48,7 +48,7 @@ public class Parser {
     private static void printSupportedCommands() {
         System.out.println("Command not recognized.\n"
                 + "please use only following inputs\n"
-                + "3 letter currency, space, ammount to add payment. Ex: USD 100\n"
+                + "3 letter currency, space, amount to add payment. Ex: USD 100\n"
                 + "load <file_path> to load payments file\n"
                 + "quit to exit program");
     }

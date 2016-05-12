@@ -4,20 +4,20 @@ import java.util.Objects;
 
 public class Payment {
 
-    private final double ammount;
+    private final double amount;
     private final Currency currency;
 
-    public Payment(double ammount, Currency currency) {
-        this.ammount = ammount;
+    public Payment(double amount, Currency currency) {
+        this.amount = amount;
         this.currency = currency;
     }
 
     public double getStandardCurrencyValue() {
-        return ammount * currency.getExchangeRate();
+        return amount * currency.getExchangeRate();
     }
 
-    public double getAmmount() {
-        return ammount;
+    public double getAmount() {
+        return amount;
     }
 
     public Currency getCurrency() {
@@ -26,13 +26,13 @@ public class Payment {
 
     @Override
     public String toString() {
-        return currency + " " + ammount;
+        return currency + " " + String.format("%.2f", amount);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.ammount) ^ (Double.doubleToLongBits(this.ammount) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.amount) ^ (Double.doubleToLongBits(this.amount) >>> 32));
         hash = 59 * hash + Objects.hashCode(this.currency);
         return hash;
     }
@@ -46,7 +46,7 @@ public class Payment {
             return false;
         }
         final Payment other = (Payment) obj;
-        if (Double.doubleToLongBits(this.ammount) != Double.doubleToLongBits(other.ammount)) {
+        if (Double.doubleToLongBits(this.amount) != Double.doubleToLongBits(other.amount)) {
             return false;
         }
         if (!Objects.equals(this.currency, other.currency)) {
@@ -55,6 +55,4 @@ public class Payment {
         return true;
     }
 
-    
-    
 }

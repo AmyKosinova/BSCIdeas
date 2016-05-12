@@ -30,17 +30,17 @@ public class ParserTest {
     @Test
     public void testDecimals() {
         String currency = "USD";
-        double ammount = 789.123;
-        Assert.assertTrue(Parser.parseInput(currency + ammount));
-        Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(ammount, Currency.getCurrency(currency))));
+        double amount = 789.123;
+        Assert.assertTrue(Parser.parseInput(currency + amount));
+        Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(amount, Currency.getCurrency(currency))));
     }
 
     @Test
     public void testNegative() {
         String currency = "EUR";
-        double ammount = -789.123;
-        Assert.assertTrue(Parser.parseInput(currency + ammount));
-        Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(ammount, Currency.getCurrency(currency))));
+        double amount = -789.123;
+        Assert.assertTrue(Parser.parseInput(currency + amount));
+        Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(amount, Currency.getCurrency(currency))));
     }
 
     @Test

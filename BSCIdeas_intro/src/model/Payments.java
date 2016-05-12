@@ -36,7 +36,7 @@ public class Payments implements Serializable {
         System.out.println("\tStored payments");
         if (!getAllPayments().isEmpty()) {
             for (Payment payment : getAllPayments()) {
-                if (payment.getAmmount() != 0) {
+                if (payment.getAmount() != 0) {
                     System.out.println("\t" + payment + " (USD "+String.format("%.2f",payment.getStandardCurrencyValue())+")");
                 }
             }
