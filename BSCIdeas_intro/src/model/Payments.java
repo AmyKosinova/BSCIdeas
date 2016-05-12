@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +38,9 @@ public class Payments implements Serializable {
         System.out.println("\tStored payments");
         if (!getAllPayments().isEmpty()) {
             for (Payment payment : getAllPayments()) {
-                if (!payment.getAmount().equals(BigDecimal.ZERO)) {
-                    System.out.println("\t" + payment + " (USD " + String.format("%.2f", payment.getStandardCurrencyValue()) + ")");
+
+                if (!payment.getAmount().equals(new BigDecimal("0.00"))) {
+                    System.out.println("\t" + payment + " (USD " + payment.getStandardCurrencyValue() + ")");
                 }
             }
         } else {

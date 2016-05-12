@@ -1,6 +1,7 @@
 package model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Payment {
@@ -9,12 +10,12 @@ public class Payment {
     private final Currency currency;
 
     public Payment(BigDecimal amount, Currency currency) {
-        this.amount = amount;
+        this.amount = amount.setScale(2,RoundingMode.HALF_UP);
         this.currency = currency;
     }
 
     public BigDecimal getStandardCurrencyValue() {
-        return amount.multiply(currency.getExchangeRate());
+        return amount.multiply(currency.getExchangeRate()).setScale(2,RoundingMode.HALF_UP);
     }
 
     public BigDecimal getAmount() {
@@ -27,7 +28,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        return currency + " " + String.format("%.2f", amount);
+        return currency + " " + amount;
     }
 
     @Override

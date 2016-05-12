@@ -41,7 +41,7 @@ public class Parser {
     public static Payment parseFileInput(String input) {
         if (input.matches(ADD_PAYMENT_RX)) {
             return new Payment(
-                    new BigDecimal(input.replaceAll(ADD_PAYMENT_RX, "$2")),
+                    new BigDecimal(input.replaceAll(ADD_PAYMENT_RX, "$2").replace(",", ".")),
                     Currency.getCurrency(input.replaceAll(ADD_PAYMENT_RX, "$1")));
         }
         return null;
