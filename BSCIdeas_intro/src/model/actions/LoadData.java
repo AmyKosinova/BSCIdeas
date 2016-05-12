@@ -38,10 +38,12 @@ public class LoadData implements Action {
                             if (addPayment.getCurrency() != null) {
                                 paymentsToAdd.add(addPayment);
                             } else {
+                                System.err.println("error parsing line. Currency not supported. Line: " + line);
                                 Logger.getLogger(Payments.class.getName()).log(Level.WARNING, "error parsing line. Currency not supported. {0}", line);
                                 return;
                             }
                         } else {
+                            System.err.println("error parsing line, operaton aborted. line: " + line);
                             Logger.getLogger(Payments.class.getName()).log(Level.WARNING, "error parsing line, operaton aborted. {0}", line);
                             return;
                         }
