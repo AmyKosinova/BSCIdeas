@@ -1,6 +1,7 @@
 package tests;
 
 import java.io.File;
+import java.math.BigDecimal;
 import model.Currency;
 import model.Payments;
 import model.actions.Action;
@@ -28,19 +29,19 @@ public class ActionTest {
 
     @Test
     public void addPaymentTest() {
-        Action addPayment = new AddPayment(12.44, Currency.getCurrency("www"));
+        Action addPayment = new AddPayment(new BigDecimal(12.44), Currency.getCurrency("www"));
         executor.execute(addPayment);
         Assert.assertTrue(Payments.getInstance().getAllPayments().isEmpty());
 
-        addPayment = new AddPayment(12.44, Currency.getCurrency("EU"));
-        executor.execute(addPayment);
-        Assert.assertTrue(Payments.getInstance().getAllPayments().isEmpty());
-        
-        addPayment = new AddPayment(12.44, null);
+        addPayment = new AddPayment(new BigDecimal(12.44), Currency.getCurrency("EU"));
         executor.execute(addPayment);
         Assert.assertTrue(Payments.getInstance().getAllPayments().isEmpty());
 
-        addPayment = new AddPayment(12.44, Currency.getCurrency("EUR"));
+        addPayment = new AddPayment(new BigDecimal(12.44), null);
+        executor.execute(addPayment);
+        Assert.assertTrue(Payments.getInstance().getAllPayments().isEmpty());
+
+        addPayment = new AddPayment(new BigDecimal(12.44), Currency.getCurrency("EUR"));
         executor.execute(addPayment);
         Assert.assertFalse(Payments.getInstance().getAllPayments().isEmpty());
     }

@@ -1,22 +1,23 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Payment {
 
-    private final double amount;
+    private final BigDecimal amount;
     private final Currency currency;
 
-    public Payment(double amount, Currency currency) {
+    public Payment(BigDecimal amount, Currency currency) {
         this.amount = amount;
         this.currency = currency;
     }
 
-    public double getStandardCurrencyValue() {
-        return amount * currency.getExchangeRate();
+    public BigDecimal getStandardCurrencyValue() {
+        return amount.multiply(currency.getExchangeRate());
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -32,7 +33,7 @@ public class Payment {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.amount) ^ (Double.doubleToLongBits(this.amount) >>> 32));
+        hash = 59 * hash + Objects.hashCode(this.amount);
         hash = 59 * hash + Objects.hashCode(this.currency);
         return hash;
     }
@@ -46,13 +47,10 @@ public class Payment {
             return false;
         }
         final Payment other = (Payment) obj;
-        if (Double.doubleToLongBits(this.amount) != Double.doubleToLongBits(other.amount)) {
+        if (!Objects.equals(this.amount, other.amount)) {
             return false;
         }
-        if (!Objects.equals(this.currency, other.currency)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.currency, other.currency);
     }
 
 }

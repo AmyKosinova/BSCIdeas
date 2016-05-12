@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +37,8 @@ public class Payments implements Serializable {
         System.out.println("\tStored payments");
         if (!getAllPayments().isEmpty()) {
             for (Payment payment : getAllPayments()) {
-                if (payment.getAmount() != 0) {
-                    System.out.println("\t" + payment + " (USD "+String.format("%.2f",payment.getStandardCurrencyValue())+")");
+                if (!payment.getAmount().equals(BigDecimal.ZERO)) {
+                    System.out.println("\t" + payment + " (USD " + String.format("%.2f", payment.getStandardCurrencyValue()) + ")");
                 }
             }
         } else {

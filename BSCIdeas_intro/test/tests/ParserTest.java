@@ -1,5 +1,6 @@
 package tests;
 
+import java.math.BigDecimal;
 import main.Parser;
 import model.Currency;
 import model.Payment;
@@ -30,7 +31,7 @@ public class ParserTest {
     @Test
     public void testDecimals() {
         String currency = "USD";
-        double amount = 789.123;
+        BigDecimal amount = new BigDecimal(789.123);
         Assert.assertTrue(Parser.parseInput(currency + amount));
         Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(amount, Currency.getCurrency(currency))));
     }
@@ -38,7 +39,7 @@ public class ParserTest {
     @Test
     public void testNegative() {
         String currency = "EUR";
-        double amount = -789.123;
+        BigDecimal amount = new BigDecimal(-789.123);
         Assert.assertTrue(Parser.parseInput(currency + amount));
         Assert.assertTrue(Payments.getInstance().getAllPayments().contains(new Payment(amount, Currency.getCurrency(currency))));
     }

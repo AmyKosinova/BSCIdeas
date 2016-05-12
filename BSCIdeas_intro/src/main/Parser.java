@@ -1,6 +1,8 @@
 package main;
 
 import java.io.File;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import model.Currency;
 import model.Payment;
 import model.actions.Action;
@@ -19,7 +21,7 @@ public class Parser {
         Action runAction = null;
         if (input.matches(ADD_PAYMENT_RX)) {
             runAction = new AddPayment(
-                    Double.parseDouble(input.replaceAll(ADD_PAYMENT_RX, "$2").replace(",", ".")),
+                    new BigDecimal(input.replaceAll(ADD_PAYMENT_RX, "$2").replace(",", ".")),
                     Currency.getCurrency(input.replaceAll(ADD_PAYMENT_RX, "$1")));
         } else if (input.matches(LOAD_FILE_RX)) {
             runAction = new LoadData(new File(input.replaceAll(LOAD_FILE_RX, "$1")));
@@ -29,7 +31,7 @@ public class Parser {
         } else if (input.matches(BLANK_RX)) {
             //do nothing
         } else {
-            System.out.println("> "+input);
+            System.out.println("> " + input);
             printSupportedCommands();
         }
         Executor.getInstance().execute(runAction);
@@ -39,7 +41,7 @@ public class Parser {
     public static Payment parseFileInput(String input) {
         if (input.matches(ADD_PAYMENT_RX)) {
             return new Payment(
-                    Double.parseDouble(input.replaceAll(ADD_PAYMENT_RX, "$2")),
+                    new BigDecimal(input.replaceAll(ADD_PAYMENT_RX, "$2")),
                     Currency.getCurrency(input.replaceAll(ADD_PAYMENT_RX, "$1")));
         }
         return null;
